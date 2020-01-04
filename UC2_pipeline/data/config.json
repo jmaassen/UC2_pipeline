@@ -1,0 +1,22 @@
+{ 
+      "PREFACTOR": {
+        "label": "PREFACTOR_LOFAR_pipeline",
+        "schema": {
+            "type": "object",
+            "title": "Configuration Parameters:",
+            "description": "This is LOFAR PREFACTOR pipeline for direction independent calibration",
+            "properties": {
+              "slurm_job_file": {
+                "type": "string",
+                "title": "slurm_job_file",
+                "description": "SLURM job file path",
+                "default": "",
+                "propertyOrder": 1
+              },
+            },
+            "required": [
+                "slurm_job_file",
+            ]
+        },
+      }
+}
