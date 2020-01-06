@@ -6,10 +6,10 @@ def readme():
         return f.read()
 
 
-setup(name='PREFACTOR_LOFAR_pipeline',
+setup(name='UC2_pipeline',
       version='0.1',
       description='',
       long_description=readme(),
-      packages=['PREFACTOR_LOFAR_pipeline'],
+      packages=['UC2_pipeline'],
       include_package_data=True,
       zip_safe=True)
