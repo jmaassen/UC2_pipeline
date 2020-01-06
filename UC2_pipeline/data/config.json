@@ -1,10 +1,10 @@
 { 
       "PREFACTOR": {
-        "label": "PREFACTOR_LOFAR_pipeline",
+        "label": "UC2_pipeline",
         "schema": {
             "type": "object",
             "title": "Configuration Parameters:",
-            "description": "This is LOFAR PREFACTOR pipeline for direction independent calibration",
+            "description": "This is LOFAR pipeline for direction independent calibration",
             "properties": {
               "slurm_job_file": {
                 "type": "string",
