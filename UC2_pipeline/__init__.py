@@ -1,9 +1,7 @@
 import json
 import os
 import subprocess
-#from fabric import Connection
 import requests
-import uuid
 
 def give_name():
     jsonfile = give_config()
@@ -32,13 +30,14 @@ def give_argument_names(required=False):
 def run_pipeline(observation, **kargs):
     print(kargs)
     # Request for staging data from LOFAR LTA
-    stageid = str(uuid.uuid4())
-#    webhook = "http://localhost:8000/stage/" + stageid
     webhook = "http://localhost:8000/sessions"
-#    webhook = "http://eaa0f304.ngrok.io"
-    srmuris = ["srm://srm.grid.sara.nl:8443/pnfs/grid.sara.nl/data/lofar/ops/projects/lofarschool/246403/L246403_SAP000_SB000_uv.MS_7d4aa18f.tar"]
-#    tarfiles = observation.split("|")
-#    srmuris = tarfiles # [ tarfiles[0] ] # testing
+#    srmuris = ["srm://srm.grid.sara.nl:8443/pnfs/grid.sara.nl/data/lofar/ops/projects/lofarschool/246403/L246403_SAP000_SB000_uv.MS_7d4aa18f.tar"]
+    tarfiles = observation.split("|")
+    srmuris = [] #tarfiles[:20] # testing
+    for tfile in tarfiles:
+        if re.search('SB0[0|1]', tfile):
+            srmuris.append(tfile)
+
     url = '/stage'
     headers = {
         'Content-Type': 'application/json',
@@ -71,7 +70,6 @@ def run_pipeline(observation, **kargs):
     res = requests.post(url, headers=headers, data=reqData)
     print(res)
     res_data = json.loads(res.content.decode("utf8"))
-    #    res_val = "xenon-flow job id: " + res_data["id"]
     print("Your staging request ID is ", str(res_data["requestId"]))
     return res
 

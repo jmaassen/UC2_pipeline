@@ -1,22 +1,173 @@
-{ 
-      "PREFACTOR": {
-        "label": "UC2_pipeline",
+{
+    "UC2FACTOR": {
+        "label": "UC2 pipeline",
         "schema": {
             "type": "object",
             "title": "Configuration Parameters:",
-            "description": "This is LOFAR pipeline for direction independent calibration",
+            "description": "This is PROCESS UC2 pipeline for LOFAR observation calibration and imaging",
             "properties": {
-              "slurm_job_file": {
-                "type": "string",
-                "title": "slurm_job_file",
-                "description": "SLURM job file path",
-                "default": "",
-                "propertyOrder": 1
-              },
+                "staging": {
+                    "type": "object",
+                    "properties": {
+                        "url": {
+                            "type": "string",
+                            "title": "Staging service URL",
+                            "default": "",
+                            "readonly": true
+                        },
+                        "login": {
+                            "type": "string",
+                            "title": "User login on LTA",
+                            "default": "",
+                            "readonly": true
+                        },
+                        "pwd": {
+                            "type": "string",
+                            "title": "User pass on LTA",
+                            "default": "{{YOUR_LTA_PWD}}",
+                            "readonly": true
+                        }
+                    },
+                    "required": [
+                        "url",
+                        "login",
+                        "pwd"
+                    ],
+                    "collapsed": true,
+                    "propertyOrder": 3
+                },
+                "hpc": {
+                    "type": "object",
+                    "properties": {
+                        "headnode": {
+                            "type": "string",
+                            "title": "HPC head node",
+                            "default": "fs0.das5.cs.vu.nl"
+                        },
+                        "path": {
+                            "type": "string",
+                            "title": "Where observation will be transferred to on HPC",
+                            "default": ""
+                        },
+                        "url": {
+                            "type": "string",
+                            "title": "Download service URL",
+                            "default": "http://lobcder.process-project.eu:31888"
+                        },
+                        "srmcert": {
+                            "type": "string",
+                            "title": "SRM certificate for transfer",
+                            "default": "{{YOUR_PACKED_BASE64_CERTIFICATE}}",
+                            "format": "textarea"
+                        },
+                        "login": {
+                            "type": "string",
+                            "title": "User login on HPC",
+                            "default": ""
+                        },
+                        "pwd": {
+                            "type": "string",
+                            "title": "User pass on HPC",
+                            "default": "{{YOUR_HPC_PWD}}"
+                        },
+                        "xenon": {
+                            "type": "string",
+                            "title": "Where Xenon-flow server is running",
+                            "default": "http://localhost:8443"
+                        },
+                        "apikey": {
+                            "type": "string",
+                            "title": "API key for Xenon-flow",
+                            "default": "in1uP28Y1Et9YGp95VLYzhm5Jgd5M1r0CKI7326RHwbVcHGa"
+                        },
+                        "cfgsrc": {
+                            "type": "string",
+                            "title": "Pipeline configuration template path",
+                            "default": ""
+                        },
+                        "prefactor": {
+                            "type": "string",
+                            "title": "Path to local PREFACTOR installation",
+                            "default": ""
+                        },
+                        "pf_out": {
+                            "type": "string",
+                            "title": "Local PREFACTOR output directory",
+                            "default": ""
+                        },
+                        "workdir": {
+                            "type": "string",
+                            "title": "Working directory",
+                            "default": ""
+                        },
+                        "datadir": {
+                            "type": "string",
+                            "title": "Directory where transferred observations will be stored",
+                            "default": ""
+                        },
+                        "container": {
+                            "type": "string",
+                            "title": "Path to the container image to be run",
+                            "default": ""
+                        },
+                        "binddir": {
+                            "type": "string",
+                            "title": "Root directory bound with the container",
+                            "default": ""
+                        },
+                        "fac_src": {
+                            "type": "string",
+                            "title": "Directory of FACTOR parset to be customised",
+                            "default": ""
+                        },
+                        "WMS": {
+                            "type": "string",
+                            "title": "Workload management system in use",
+                            "default": "SLURM"
+                        }
+                    },
+                    "required": [
+                        "headnode",
+                        "path",
+                        "url",
+                        "srmcert",
+                        "login",
+                        "pwd",
+                        "xenon",
+                        "apikey",
+                        "cfgsrc",
+                        "prefactor",
+                        "pf_out",
+                        "workdir",
+                        "datadir",
+                        "container",
+                        "binddir",
+                        "fac_src",
+                        "WMS"
+                    ],
+                    "collapsed": true,
+                    "propertyOrder": 4
+                },
+                "workflow": {
+                    "type": "string",
+                    "title": "Workflow name as seen by Xenon-flow",
+                    "default": "ddcfac",
+                    "propertyOrder": 1
+                },
+                "cwl": {
+                    "type": "string",
+                    "title": "CWL description file of the workflow",
+                    "default": "process-uc2v3.cwl",
+                    "propertyOrder": 2
+                }
             },
             "required": [
-                "slurm_job_file",
+                "staging",
+                "hpc",
+                "workflow",
+                "cwl"
             ]
         },
-      }
+        "id": "UC2FACTOR"
+    }
 }
