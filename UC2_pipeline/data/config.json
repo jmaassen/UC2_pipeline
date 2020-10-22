@@ -80,20 +80,20 @@
                             "title": "API key for Xenon-flow",
                             "default": "in1uP28Y1Et9YGp95VLYzhm5Jgd5M1r0CKI7326RHwbVcHGa"
                         },
-                        "cfgsrc": {
+                        "templatedir": {
                             "type": "string",
                             "title": "Pipeline configuration template path",
-                            "default": ""
+                            "default": "/var/scratch/madougou/LOFAR/templates"
                         },
                         "prefactor": {
                             "type": "string",
                             "title": "Path to local PREFACTOR installation",
                             "default": ""
                         },
-                        "pf_out": {
+                        "factordir": {
                             "type": "string",
-                            "title": "Local PREFACTOR output directory",
-                            "default": ""
+                            "title": "FACTOR working directory",
+                            "default": "/local/madougou/factor"
                         },
                         "workdir": {
                             "type": "string",
@@ -115,11 +115,6 @@
                             "title": "Root directory bound with the container",
                             "default": ""
                         },
-                        "fac_src": {
-                            "type": "string",
-                            "title": "Directory of FACTOR parset to be customised",
-                            "default": ""
-                        },
                         "WMS": {
                             "type": "string",
                             "title": "Workload management system in use",
@@ -135,14 +130,13 @@
                         "pwd",
                         "xenon",
                         "apikey",
-                        "cfgsrc",
+                        "templatedir",
                         "prefactor",
-                        "pf_out",
+                        "factordir",
                         "workdir",
                         "datadir",
                         "container",
                         "binddir",
-                        "fac_src",
                         "WMS"
                     ],
                     "collapsed": true,
@@ -151,13 +145,13 @@
                 "workflow": {
                     "type": "string",
                     "title": "Workflow name as seen by Xenon-flow",
-                    "default": "ddcfac",
+                    "default": "factor",
                     "propertyOrder": 1
                 },
                 "cwl": {
                     "type": "string",
                     "title": "CWL description file of the workflow",
-                    "default": "process-uc2v3.cwl",
+                    "default": "uc2.cwl",
                     "propertyOrder": 2
                 }
             },
