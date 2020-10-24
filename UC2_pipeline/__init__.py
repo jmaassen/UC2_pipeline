@@ -30,11 +30,7 @@ def give_argument_names(required=False):
 
 def run_pipeline(observation, observation2, **kargs):
     print(kargs)
-    print("###Observation: ", observation)
-    print("###Observation2: ", observation2)
     # Request for staging data from LOFAR LTA
-    webhook = "http://localhost:8000/sessions"
-    #    srmuris = ["srm://srm.grid.sara.nl:8443/pnfs/grid.sara.nl/data/lofar/ops/projects/lofarschool/246403/L246403_SAP000_SB000_uv.MS_7d4aa18f.tar"]
     tarfiles = observation.split("|")
     srmuris = [] #tarfiles[:20] # testing
     for tfile in tarfiles:
@@ -57,7 +53,6 @@ def run_pipeline(observation, observation2, **kargs):
             },
             "credentials": {}
         },
-        #        "webhook": {"method": "post", "url": webhook, "headers": {}},
         "options": {},
     }
     
