@@ -12,13 +12,13 @@
                         "url": {
                             "type": "string",
                             "title": "Staging service URL",
-                            "default": "",
+                            "default": "http://145.100.130.145:32010",
                             "readonly": true
                         },
                         "login": {
                             "type": "string",
                             "title": "User login on LTA",
-                            "default": "",
+                            "default": "{{YOUR_LTA_LOGIN}}",
                             "readonly": true
                         },
                         "pwd": {
@@ -52,18 +52,18 @@
                         "url": {
                             "type": "string",
                             "title": "Download service URL",
-                            "default": "http://lobcder.process-project.eu:31888"
+                            "default": "http://lobcder.process-project.eu:8090"
                         },
                         "srmcert": {
                             "type": "string",
                             "title": "SRM certificate for transfer",
-                            "default": "{{YOUR_PACKED_BASE64_CERTIFICATE}}",
+                            "default": "{{YOUR_BASE64_CERTIFICATE}}",
                             "format": "textarea"
                         },
                         "login": {
                             "type": "string",
                             "title": "User login on HPC",
-                            "default": ""
+                            "default": "{{YOUR_HPC_LOGIN}}"
                         },
                         "pwd": {
                             "type": "string",
@@ -80,24 +80,14 @@
                             "title": "API key for Xenon-flow",
                             "default": "in1uP28Y1Et9YGp95VLYzhm5Jgd5M1r0CKI7326RHwbVcHGa"
                         },
-                        "templatedir": {
+                        "workdir": {
                             "type": "string",
-                            "title": "Pipeline configuration template path",
-                            "default": "/var/scratch/madougou/LOFAR/templates"
-                        },
-                        "prefactor": {
-                            "type": "string",
-                            "title": "Path to local PREFACTOR installation",
+                            "title": "Working directory",
                             "default": ""
                         },
                         "factordir": {
                             "type": "string",
                             "title": "FACTOR working directory",
-                            "default": "/local/madougou/factor"
-                        },
-                        "workdir": {
-                            "type": "string",
-                            "title": "Working directory",
                             "default": ""
                         },
                         "datadir": {
@@ -114,11 +104,6 @@
                             "type": "string",
                             "title": "Root directory bound with the container",
                             "default": ""
-                        },
-                        "WMS": {
-                            "type": "string",
-                            "title": "Workload management system in use",
-                            "default": "SLURM"
                         }
                     },
                     "required": [
@@ -130,14 +115,11 @@
                         "pwd",
                         "xenon",
                         "apikey",
-                        "templatedir",
-                        "prefactor",
-                        "factordir",
                         "workdir",
+                        "factordir",
                         "datadir",
                         "container",
-                        "binddir",
-                        "WMS"
+                        "binddir"
                     ],
                     "collapsed": true,
                     "propertyOrder": 4
