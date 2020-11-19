@@ -56,15 +56,28 @@ def run_pipeline(observation, observation2, **kargs):
         "options": {},
     }
     
-    #    print(kargs)
+    print(kargs)
+
     for kw in kargs:
         if kw == "staging":
             url = kargs[kw]["url"] + url
             data["cmd"]["credentials"]["lofarUsername"] = kargs[kw]["login"]
             data["cmd"]["credentials"]["lofarPassword"] = kargs[kw]["pwd"]
     reqData = json.dumps(data)
+
+    print("Data is:")
+    print(data)
+
     res = requests.post(url, headers=headers, data=reqData)
+
+    print("POST result:")
+    print(res.text)
+
     res_data = json.loads(res.content.decode("utf8"))
+
+    print("Rest_data:")
+    print(res_data)
+
     print("Your staging request ID is ", str(res_data["requestId"]))
     return res
 
